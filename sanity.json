@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "project": {
+    "name": "jems.io"
+  },
+  "api": {
+    "projectId": "noabyjmx",
+    "dataset": "production"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "asset-source-unsplash",
+    "tags",
+    "markdown",
+    "cloudinary"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}
