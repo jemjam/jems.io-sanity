@@ -29,7 +29,6 @@
     "sanity-plugin-asset-source-unsplash": "^0.2.1",
     "sanity-plugin-cloudinary": "^0.2.2",
     "sanity-plugin-markdown": "^2.1.1",
-    "sanity-plugin-tags": "^1.5.0",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {},

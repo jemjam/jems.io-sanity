@@ -25,10 +25,17 @@ export default {
       type: "cloudinary.asset",
     },
     {
-      name: "tags",
-      title: "Tags",
-      type: "tags",
-      includeFromRelated: 'tags'
+      name: "relatedTopics",
+      title: "Topics",
+      description: "Topics (tags) that this post is related to",
+      type: "array",
+      layout: "tags",
+      of: [
+        {
+          type: "reference",
+          to: { type: "topic" },
+        },
+      ],
     },
     {
       name: "publishedAt",
@@ -46,7 +53,6 @@ export default {
     prepare(selection) {
       const { title, slug, mainImage = {} } = selection;
       // This is coming from the cloudinary image asset field
-      console.log('mainImage', mainImage);
       const { secure_url = "", derived = [] } = mainImage;
       // Get first derived image if it exists, otherwise use the main image
       const imageUrl = derived?.[0]?.secure_url ?? secure_url;

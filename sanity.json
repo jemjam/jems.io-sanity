@@ -13,7 +13,6 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "asset-source-unsplash",
-    "tags",
     "markdown",
     "cloudinary"
   ],

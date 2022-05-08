@@ -4,13 +4,13 @@ export default {
   type: "document",
   fields: [
     {
-      name: "title",
-      title: "Title",
+      name: "label",
+      title: "Title (label)",
       type: "string",
     },
     {
-      name: "slug",
-      title: "Slug",
+      name: "value",
+      title: "Slug (value)",
       type: "slug",
       options: {
         source: "title",
