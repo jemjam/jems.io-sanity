@@ -1,3 +1,6 @@
+import { HiExternalLink } from "react-icons/hi";
+import { RiLinkUnlink, RiLinkUnlinkM } from "react-icons/ri";
+
 /**
  * This is the schema definition for the rich text fields used for
  * for this blog studio. When you import it in schemas.js it can be
@@ -22,7 +25,6 @@ export default {
       // use your content.
       styles: [
         { title: "Normal", value: "normal" },
-        { title: "H1", value: "h1" },
         { title: "H2", value: "h2" },
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
@@ -39,6 +41,8 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          { title: "Code", value: "code" },
+          { title: "Strike", value: "strike-through" },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -46,11 +50,13 @@ export default {
             name: "link",
             type: "object",
             title: "External link",
+            blockEditor: { icon: HiExternalLink },
             fields: [
               {
                 name: "href",
                 type: "url",
                 title: "URL",
+                description: "A remote link to content on a different website.",
               },
               {
                 title: "Open in new tab",
@@ -64,17 +70,33 @@ export default {
             name: "internalLink",
             type: "object",
             title: "Internal link",
-            description: "A reference to content in this site",
+            blockEditor: { icon: RiLinkUnlinkM },
             fields: [
               {
                 name: "reference",
                 type: "reference",
                 title: "Reference",
+                description: "A reference to content in this site",
                 to: [
                   { type: "post" },
                   { type: "page" },
                   // other types you may want to link to
                 ],
+              },
+            ],
+          },
+          {
+            name: "localLink",
+            type: "object",
+            title: "Local link",
+            blockEditor: { icon: RiLinkUnlink },
+            fields: [
+              {
+                name: "href",
+                type: "string",
+                title: "Path (href)",
+                description:
+                  "A string representing the location pathname (with optional search and hash)",
               },
             ],
           },

@@ -22,14 +22,16 @@ export default {
     {
       name: "mainImage",
       title: "Main image",
+      description:
+        "The primary image, usually displayed prominently and in the post list.",
       type: "cloudinary.asset",
     },
     {
       name: "relatedTopics",
       title: "Topics",
-      description: "Topics (tags) that this post is related to",
+      description:
+        "Topic (references) that this post is related to. This is used to find and filter posts by topic.",
       type: "array",
-      layout: "tags",
       of: [
         {
           type: "reference",

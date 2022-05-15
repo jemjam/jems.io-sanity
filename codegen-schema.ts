@@ -154,6 +154,29 @@ export interface Topic extends SanityDocument {
   description?: string;
 }
 
+/**
+ * Site Settings
+ *
+ *
+ */
+export interface SiteSettings extends SanityDocument {
+  _type: "siteSettings";
+
+  /**
+   * Home Page — `reference`
+   *
+   * Select a page to use as the homepage.
+   */
+  home?: SanityReference<Page>;
+
+  /**
+   * Description — `string`
+   *
+   * A short description of this site generally.
+   */
+  description?: string;
+}
+
 export type BlockContent = Array<
   SanityKeyed<SanityBlock> | SanityKeyed<ImageWithAlt>
 >;
@@ -182,7 +205,7 @@ export type ImageWithAlt = {
   caption?: string;
 };
 
-export type Documents = Post | Page | Topic;
+export type Documents = Post | Page | Topic | SiteSettings;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
