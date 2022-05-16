@@ -53,14 +53,14 @@ export default {
 
   preview: {
     prepare(selection) {
-      const { title, slug, mainImage = {} } = selection;
+      const { title, slug = {}, mainImage = {} } = selection;
       // This is coming from the cloudinary image asset field
       const { secure_url = "", derived = [] } = mainImage;
       // Get first derived image if it exists, otherwise use the main image
       const imageUrl = derived?.[0]?.secure_url ?? secure_url;
       return {
         title: title,
-        subtitle: slug.current,
+        subtitle: slug?.current ?? "(no slug set)",
         media: imageUrl ? <img src={imageUrl} alt="mainImage" /> : null,
       };
     },

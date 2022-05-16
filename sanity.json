@@ -1,11 +1,11 @@
 {
   "root": true,
+  "api": {
+    "projectId": "vet84lmg",
+    "dataset": "production"
+  },
   "project": {
     "name": "jems.io"
-  },
-  "api": {
-    "projectId": "noabyjmx",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
