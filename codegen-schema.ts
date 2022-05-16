@@ -37,6 +37,29 @@ export type {
 };
 
 /**
+ * Site Settings
+ *
+ *
+ */
+export interface SiteSettings extends SanityDocument {
+  _type: "siteSettings";
+
+  /**
+   * Home Page — `reference`
+   *
+   * Select a page to use as the homepage.
+   */
+  home?: SanityReference<Page>;
+
+  /**
+   * Description — `string`
+   *
+   * A short description of this site generally.
+   */
+  description?: string;
+}
+
+/**
  * Post
  *
  *
@@ -61,14 +84,14 @@ export interface Post extends SanityDocument {
   /**
    * Main image — `cloudinary.asset`
    *
-   *
+   * The primary image, usually displayed prominently and in the post list.
    */
   mainImage?: CloudinaryAsset;
 
   /**
    * Topics — `array`
    *
-   * Topics (tags) that this post is related to
+   * Topic (references) that this post is related to. This is used to find and filter posts by topic.
    */
   relatedTopics?: Array<SanityKeyedReference<Topic>>;
 
@@ -85,6 +108,36 @@ export interface Post extends SanityDocument {
    *
    */
   body?: BlockContent;
+}
+
+/**
+ * Topic
+ *
+ *
+ */
+export interface Topic extends SanityDocument {
+  _type: "topic";
+
+  /**
+   * Title (label) — `string`
+   *
+   * Title as displayed in tag and topic pages.
+   */
+  Title?: string;
+
+  /**
+   * Slug (value) — `slug`
+   *
+   * Slug used as reference or for part of the topic URL.
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Description — `text`
+   *
+   * A brief description of the topic displayed on topic pages.
+   */
+  description?: string;
 }
 
 /**
@@ -124,59 +177,6 @@ export interface Page extends SanityDocument {
   body?: BlockContent;
 }
 
-/**
- * Topic
- *
- *
- */
-export interface Topic extends SanityDocument {
-  _type: "topic";
-
-  /**
-   * Title (label) — `string`
-   *
-   *
-   */
-  label?: string;
-
-  /**
-   * Slug (value) — `slug`
-   *
-   *
-   */
-  value?: { _type: "value"; current: string };
-
-  /**
-   * Description — `text`
-   *
-   *
-   */
-  description?: string;
-}
-
-/**
- * Site Settings
- *
- *
- */
-export interface SiteSettings extends SanityDocument {
-  _type: "siteSettings";
-
-  /**
-   * Home Page — `reference`
-   *
-   * Select a page to use as the homepage.
-   */
-  home?: SanityReference<Page>;
-
-  /**
-   * Description — `string`
-   *
-   * A short description of this site generally.
-   */
-  description?: string;
-}
-
 export type BlockContent = Array<
   SanityKeyed<SanityBlock> | SanityKeyed<ImageWithAlt>
 >;
@@ -205,7 +205,7 @@ export type ImageWithAlt = {
   caption?: string;
 };
 
-export type Documents = Post | Page | Topic | SiteSettings;
+export type Documents = SiteSettings | Post | Topic | Page;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
