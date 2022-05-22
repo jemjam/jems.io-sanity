@@ -70,23 +70,37 @@ export interface Post extends SanityDocument {
   /**
    * Title — `string`
    *
-   *
+   * The title of the page, rendered as H1 and page title.
    */
   title?: string;
 
   /**
+   * Description — `text`
+   *
+   * A short description of the page, used in listings and search results.
+   */
+  description?: string;
+
+  /**
    * Slug — `slug`
    *
-   *
+   * The slug of the page defines the URL path to this content (relative to the content type).
    */
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Main image — `cloudinary.asset`
+   * Main image — `imageWithAlt`
    *
-   * The primary image, usually displayed prominently and in the post list.
+   * The main image of the page typically displayed in a hero region.
    */
-  mainImage?: CloudinaryAsset;
+  mainImage?: ImageWithAlt;
+
+  /**
+   * Body — `blockContent`
+   *
+   * The body of the page, our main content.
+   */
+  body?: BlockContent;
 
   /**
    * Topics — `array`
@@ -98,16 +112,9 @@ export interface Post extends SanityDocument {
   /**
    * Published at — `datetime`
    *
-   *
+   * A date and time when this post is available (unavailable until then).
    */
   publishedAt?: string;
-
-  /**
-   * Body — `blockContent`
-   *
-   *
-   */
-  body?: BlockContent;
 }
 
 /**
@@ -151,28 +158,35 @@ export interface Page extends SanityDocument {
   /**
    * Title — `string`
    *
-   *
+   * The title of the page, rendered as H1 and page title.
    */
   title?: string;
 
   /**
+   * Description — `text`
+   *
+   * A short description of the page, used in listings and search results.
+   */
+  description?: string;
+
+  /**
    * Slug — `slug`
    *
-   *
+   * The slug of the page defines the URL path to this content (relative to the content type).
    */
   slug?: { _type: "slug"; current: string };
 
   /**
    * Main image — `imageWithAlt`
    *
-   *
+   * The main image of the page typically displayed in a hero region.
    */
   mainImage?: ImageWithAlt;
 
   /**
    * Body — `blockContent`
    *
-   *
+   * The body of the page, our main content.
    */
   body?: BlockContent;
 }
